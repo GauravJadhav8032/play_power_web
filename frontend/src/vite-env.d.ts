@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 // Type declarations for CSS module imports (side-effect imports)
 declare module "*.css" {
   const styles: { [className: string]: string };
