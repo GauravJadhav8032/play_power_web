@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --airbnb-red: #FF385C;
+  --airbnb-dark: #E31C5F;
+  --airbnb-text: #222222;
+  --airbnb-secondary: #717171;
+  --airbnb-border: #DDDDDD;
+  --airbnb-hover: #F7F7F7;
+  --airbnb-light: #F0F0F0;
+  --header-height: 80px;
+}
+
+html {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--airbnb-text);
+  background-color: #ffffff;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scroll lock utility applied via JS */
+body.scroll-locked {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px);
+}
+
+/* ─── Typography ─────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--airbnb-text);
+  line-height: 1.3;
+}
+
+/* ─── Focus Styles ───────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--airbnb-text);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Scrollbar Styling ──────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+/* ─── Custom Utilities ───────────────────────── */
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .underline-hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .btn-underline {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .btn-underline:hover {
+    color: var(--airbnb-secondary);
+  }
+}
+
+/* ─── Divider ─────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--airbnb-border);
+  margin: 32px 0;
+}
+
+/* ─── Star Rating ────────────────────────────── */
+.star-filled {
+  color: #222222;
+  fill: #222222;
+}
+
+/* ─── Photo grid hover ───────────────────────── */
+.photo-grid-item img {
+  transition: transform 0.3s ease;
+}
+.photo-grid-item:hover img {
+  transform: scale(1.02);
+}
+
+/* ─── Smooth transition defaults ────────────── */
+button, a {
+  transition: all 0.15s ease;
+}
+
+/* ─── Booking card sticky ───────────────────── */
+.booking-card-wrapper {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+/* ─── Amenity Modal scrollbar ───────────────── */
+.amenity-modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* ─── Photo Tour scrollbar ───────────────────── */
+.photo-tour-scroll {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ─── Framer overlay ────────────────────────── */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* ─── Date picker cells ──────────────────────── */
+.calendar-cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  transition: background 0.15s ease;
+}
+
+.calendar-cell:hover {
+  background-color: var(--airbnb-light);
+}
+
+.calendar-cell.selected {
+  background-color: var(--airbnb-text);
+  color: white;
+}
+
+.calendar-cell.in-range {
+  background-color: var(--airbnb-light);
+  border-radius: 0;
+}
+
+.calendar-cell.disabled {
+  color: #DDDDDD;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─── Hover underline links ──────────────────── */
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ─── Section navigation tabs (sticky) ──────── */
+.nav-tabs-sticky {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 40;
+  background-color: white;
+  border-bottom: 1px solid var(--airbnb-border);
+}
